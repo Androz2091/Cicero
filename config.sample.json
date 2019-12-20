@@ -1,0 +1,12 @@
+{
+    "token": "Your Discord bot token",
+    "prefix": "!",
+    "owners": [ "OWNER ID #1", "OWNER ID #2" ],
+    "status": {
+        "name": "Speaking!",
+        "options": {
+            "url": "https://twitch.tv/ninja",
+            "type": "STREAMING"
+        }
+    }
+}

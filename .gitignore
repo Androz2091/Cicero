@@ -1,0 +1,14 @@
+# Node modules
+node_modules/
+
+# Config
+config.json
+
+# Compiled files
+dist/*
+
+# Macos
+.DS_Store
+
+# Npm
+package-lock.json

@@ -1,0 +1,25 @@
+{
+  "name": "cicero",
+  "version": "1.0.0",
+  "description": "Great speaker, Cicero is a text-to-speech Discord Bot!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Androz2091",
+  "license": "ISC",
+  "dependencies": {
+    "@types/ws": "^6.0.4",
+    "chalk": "^3.0.0",
+    "discord.js": "github:discordjs/discord.js",
+    "discord.js-commando": "github:discordjs/Commando",
+    "ffmpeg": "0.0.4",
+    "ffmpeg-static": "^2.7.0",
+    "google-tts-api": "0.0.4",
+    "node-opus": "^0.3.3",
+    "wumpfetch": "github:Androz2091/wumpfetch#patch-1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.21"
+  }
+}
