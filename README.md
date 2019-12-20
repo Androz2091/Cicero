@@ -22,3 +22,8 @@ Cicero was made with a **Google translate** wrapper, so it's totally **free, no 
 `!prefix`: Shows or sets the command prefix  
 `!ping`: Checks the bot's ping to the Discord server  
 `!eval`: Executes JavaScript code  
+
+## Screenshots
+
+![speaking](images/speaking.png)
+![terminated](images/terminated.png)
