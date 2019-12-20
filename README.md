@@ -9,6 +9,7 @@ Cicero was made with a **Google translate** wrapper, so it's totally **free, no 
 
 `!join`: Joins your voice channel!  
 `!speak [language] [text]`: Speaks in your voice channel!
+`!queue`: Displays the server queue!
 
 ### Commando commands
 
