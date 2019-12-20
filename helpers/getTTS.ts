@@ -1,6 +1,5 @@
 import url from "url";
 import { get, WumpResponse } from "wumpfetch";
-import { stringify } from "querystring";
 
 const XL = (a: any, b: any) => {
     for (let c = 0; c < b.length - 2; c += 3) {

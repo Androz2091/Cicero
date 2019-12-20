@@ -27,3 +27,4 @@ Cicero was made with a **Google translate** wrapper, so it's totally **free, no 
 
 ![speaking](images/speaking.png)
 ![terminated](images/terminated.png)
+![queue](images/queue.png)

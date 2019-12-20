@@ -1,7 +1,7 @@
 import * as config from "./config.json";
 import { join } from "path";
 
-import { ActivityType, GuildMember, Guild } from "discord.js";
+import { ActivityType } from "discord.js";
 import Cicero from "./structures/Client";
 
 const client = new Cicero({

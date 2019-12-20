@@ -5,10 +5,14 @@ interface SpeakArguments {
 
 import { Command, CommandoMessage } from "discord.js-commando";
 import Cicero from "../../structures/Client";
-import getTTS from "../../helpers/getTTS";
 import { VoiceConnection } from "discord.js";
+import Guild from "../../structures/Guild";
+import playTTS from "../../helpers/playTTS";
 
 module.exports = class Speak extends Command {
+
+    cicero: Cicero;
+
     constructor(client: Cicero) {
         super(client, {
             name: "speak",
@@ -32,10 +36,10 @@ module.exports = class Speak extends Command {
                 }
             ]
         });
+        this.cicero = client;
     }
 
     async run(message: CommandoMessage, args: SpeakArguments) {
-        let tts: string = await getTTS(args.language, 1, args.text);
         let voiceConnection: VoiceConnection = null;
         if(!message.guild.me.voice.connection){
             if(message.member.voice.channel){
@@ -48,10 +52,20 @@ module.exports = class Speak extends Command {
         } else {
             voiceConnection = message.guild.me.voice.connection;
         }
-        let msg = await message.channel.send(":speaking_head: Speaking in **"+voiceConnection.channel.name+"**...");
-        let dispatcher = await voiceConnection.play(tts);
-        dispatcher.on("finish", () => {
-            msg.edit(":speaking_head: Message terminated in **"+voiceConnection.channel.name+"**... I've just stopped to speak.");
+        let guildData: Guild = this.cicero.guildsData.get(message.guild.id);
+        if(!guildData){
+            guildData = new Guild(voiceConnection.channel);
+            guildData.connection = voiceConnection;
+            this.cicero.guildsData.set(message.guild.id, guildData);
+        }
+        guildData.queue.push({
+            text: args.text,
+            language: args.language,
+            author: message.author.tag
         });
+        if(guildData.playing){
+            return message.channel.send(":information_source: The text was added to the server queue!");
+        }
+        playTTS(voiceConnection, guildData.queue[0], this.cicero, message);
     }
 };

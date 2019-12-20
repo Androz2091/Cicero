@@ -1,7 +1,10 @@
 import { Command, CommandoMessage } from "discord.js-commando";
 import Cicero from "../../structures/Client";
+import Guild from "../../structures/Guild";
 
 module.exports = class Join extends Command {
+
+    cicero: Cicero;
 
     constructor(client: Cicero) {
         super(client, {
@@ -12,6 +15,7 @@ module.exports = class Join extends Command {
             examples: [ "join" ],
             ownerOnly: true
         });
+        this.cicero = client;
     }
 
     async run(message: CommandoMessage) {
@@ -20,6 +24,7 @@ module.exports = class Join extends Command {
         if(channelToJoin){
             channelToJoin.join().then(() => {
                 message.channel.send(":speak_no_evil: Joined **"+channelToJoin.name+"**!");
+                this.cicero.guildsData.set(message.guild.id, new Guild(channelToJoin));
             }).catch(() => {
                 message.channel.send(":x: I can't join **"+channelToJoin.name+"**...");
             });
