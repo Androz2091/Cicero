@@ -37,7 +37,7 @@ const generateToken = (text: any, key: any) => {
 
 /**
  * Gets audio from a text to a Readable Stream
- * @param {string} language 
+ * @param {string} language
  * @param {number} speed
  * @param {string} text
  * @returns {string} URL: the Readable Stream
